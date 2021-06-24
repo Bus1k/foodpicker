@@ -35,7 +35,7 @@ class Authenticate
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if ($this->auth->guard($guard)->guest()) {
+        if (env('API_TOKEN') !== $request->header('apikey')) {
             return response('Unauthorized.', 401);
         }
 

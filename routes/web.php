@@ -17,7 +17,7 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->group(['prefix' => 'api/restaurant'], function () use ($router) {
+$router->group(['prefix' => 'api/restaurant', 'middleware' => 'auth'], function () use ($router) {
 
     $router->post('add', 'RestaurantController@store');
 
